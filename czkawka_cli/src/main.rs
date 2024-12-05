@@ -20,7 +20,7 @@ use czkawka_core::empty_folder::EmptyFolder;
 use czkawka_core::invalid_symlinks::InvalidSymlinks;
 use czkawka_core::progress_data::ProgressData;
 use czkawka_core::same_music::{SameMusic, SameMusicParameters};
-use czkawka_core::similar_images::{return_similarity_from_similarity_preset, test_image_conversion_speed, SimilarImages, SimilarImagesParameters};
+use czkawka_core::similar_images::{test_image_conversion_speed, SimilarImages, SimilarImagesParameters};
 use czkawka_core::similar_videos::{SimilarVideos, SimilarVideosParameters};
 use czkawka_core::temporary::Temporary;
 use log::error;
@@ -202,7 +202,7 @@ fn similar_images(similar_images: SimilarImagesArgs, stop_receiver: &Receiver<()
 
     // let similarity = return_similarity_from_similarity_preset(&similarity_preset, hash_size);
     let params = SimilarImagesParameters::new(
-        similarity,
+        (similarity as u32),
         hash_size,
         hash_alg,
         image_filter,
