@@ -229,6 +229,15 @@ pub struct SimilarImagesArgs {
         long_help = "Methods to choose similarity level of images which will be considered as duplicated."
     )]
     pub similarity_preset: SimilarityPreset,
+    #[clap(
+        short,
+        long,
+        value_parser = parse_image_similarity,
+        default_value = "40",
+        help = "similarity, in [0, 40]",
+        long_help = "similarity, in [0, 40]"
+    )]
+    pub similarity: u8,
     #[clap(flatten)]
     pub delete_method: DMethod,
     #[clap(flatten)]
@@ -710,6 +719,19 @@ fn parse_image_hash_size(src: &str) -> Result<u8, String> {
         _ => return Err("Couldn't parse the image hash size (allowed: 8, 16, 32, 64)".to_string()),
     };
     Ok(hash_size)
+}
+
+fn parse_image_similarity(src: &str) -> Result<u8, String> {
+    match src.parse::<u8>() {
+        Ok(image_similarity) => {
+            if image_similarity  <= 40 {
+                Ok(image_similarity)
+            } else {
+                Err("similarity must in [0, 40]".to_string())
+            }
+        }
+        Err(e) => Err(e.to_string()),
+    }
 }
 
 fn parse_music_duplicate_type(src: &str) -> Result<MusicSimilarity, String> {

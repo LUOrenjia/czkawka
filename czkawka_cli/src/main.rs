@@ -190,6 +190,7 @@ fn similar_images(similar_images: SimilarImagesArgs, stop_receiver: &Receiver<()
         minimal_file_size,
         maximal_file_size,
         similarity_preset,
+        similarity,
         hash_alg,
         image_filter,
         hash_size,
@@ -199,7 +200,7 @@ fn similar_images(similar_images: SimilarImagesArgs, stop_receiver: &Receiver<()
         ignore_same_size,
     } = similar_images;
 
-    let similarity = return_similarity_from_similarity_preset(&similarity_preset, hash_size);
+    // let similarity = return_similarity_from_similarity_preset(&similarity_preset, hash_size);
     let params = SimilarImagesParameters::new(
         similarity,
         hash_size,
