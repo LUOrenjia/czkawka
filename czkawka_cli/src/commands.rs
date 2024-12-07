@@ -230,7 +230,7 @@ pub struct SimilarImagesArgs {
     )]
     pub similarity_preset: SimilarityPreset,
     #[clap(
-        short = 'sim',
+        short = 'q',
         long,
         value_parser = parse_image_similarity,
         default_value = "40",
