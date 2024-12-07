@@ -202,7 +202,7 @@ fn similar_images(similar_images: SimilarImagesArgs, stop_receiver: &Receiver<()
 
     // let similarity = return_similarity_from_similarity_preset(&similarity_preset, hash_size);
     let params = SimilarImagesParameters::new(
-        (similarity as u32),
+        similarity as u32,
         hash_size,
         hash_alg,
         image_filter,

@@ -230,12 +230,12 @@ pub struct SimilarImagesArgs {
     )]
     pub similarity_preset: SimilarityPreset,
     #[clap(
-        short,
+        short = 'sim',
         long,
         value_parser = parse_image_similarity,
         default_value = "40",
-        help = "similarity, in [0, 40]",
-        long_help = "similarity, in [0, 40]"
+        help = "similarity, (allowed: 0 to 40)",
+        long_help = "similarity, (allowed: 0 to 40)"
     )]
     pub similarity: u8,
     #[clap(flatten)]
